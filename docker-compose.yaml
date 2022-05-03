@@ -1,5 +1,7 @@
 version: '3.5'
-
+networks:
+  altouch_net:
+    external: true # Join an existing Docker network
 services:
   db-postgres:
     image: postgres:14-bullseye
