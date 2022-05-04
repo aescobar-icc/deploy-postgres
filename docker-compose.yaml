@@ -18,6 +18,7 @@ services:
         ipv4_address: 172.20.11.100
   adminer:
     image: adminer
+    container_name: db-adminer
     restart: always
     ports:
       - 8080:8080
