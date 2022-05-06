@@ -4,6 +4,8 @@ networks:
     external: true # Join an existing Docker network
 services:
   db-postgres:
+    mem_limit: 100m
+    mem_reservation: 50M
     image: postgres:14-bullseye
     container_name: db-postgres
     env_file:
@@ -17,7 +19,15 @@ services:
       altouch_net:
         ipv4_address: 172.20.11.100
   adminer:
-    image: adminer
+    mem_limit: 100m
+    mem_reservation: 50M
+    #image: adminer
+    image: aescobaricc/base-adminer:0.0.1
+    build:
+      context: .
+      dockerfile: Dockerfile.adminer
+      args:
+        MAX_FILE_SIZE: 300M
     container_name: db-adminer
     restart: always
     ports:
