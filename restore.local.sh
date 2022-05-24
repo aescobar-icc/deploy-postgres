@@ -8,6 +8,7 @@ database_name=$1
 path_backup_file=$2
 port=5433
 
+echo "Restoring database $database_name from $path_backup_file"
 
 # -e
 # --exit-on-error
@@ -18,8 +19,8 @@ port=5433
 # $2 the location backup file
 # -W to force asking for the password to the user (postgres)
 
-
-PGPASSWORD=$POSTGRES_PASSWORD pg_restore --exit-on-error -h localhost -p $port -c -U admin -d $database_name -v $path_backup_file
+#--exit-on-error
+PGPASSWORD=$POSTGRES_PASSWORD pg_restore  -h localhost -p $port -c -U admin -d $database_name -v $path_backup_file
 
 # CREATE ROLE postgres;
 # CREATE ROLE altouch_root
